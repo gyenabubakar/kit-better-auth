@@ -4,13 +4,13 @@ services:
     restart: always
     shm_size: 128mb
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: admin
-      POSTGRES_DB: synchronus_db
+      POSTGRES_DB: application_db
     volumes:
-      - synchronus_db_data:/var/lib/postgresql/data
+      - application_db_data:/var/lib/postgresql/data
 
 volumes:
-  synchronus_db_data:
+  application_db_data:
