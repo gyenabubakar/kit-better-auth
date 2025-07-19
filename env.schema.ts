@@ -1,0 +1,24 @@
+import { z } from 'zod';
+
+export const EnvSchema = z.object({
+	PRIVATE_DATABASE_URL: z.string().trim().min(1),
+	// PRIVATE_TURSO_DATABASE_URL: z.url(),
+	// PRIVATE_TURSO_AUTH_TOKEN: z
+	// 	.string()
+	// 	.trim()
+	// 	.optional()
+	// 	.transform((v) => {
+	// 		if (process.env.NODE_ENV === 'production') return v;
+	// 		return undefined;
+	// 	}),
+
+	PUBLIC_BETTER_AUTH_URL: z.url(),
+	PRIVATE_BETTER_AUTH_SECRET: z.string().trim().min(1),
+
+	PUBLIC_GITHUB_CALLBACK_URL: z.url(),
+	PRIVATE_GITHUB_CLIENT_ID: z.string().trim().min(1),
+	PRIVATE_GITHUB_CLIENT_SECRET: z.string().trim().min(1),
+	PRIVATE_GITHUB_WEBHOOK_SECRET: z.string().trim().min(1)
+});
+
+export type Env = z.infer<typeof EnvSchema>;
